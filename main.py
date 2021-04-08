@@ -17,3 +17,9 @@ import os
 
 a = os.listdir(path='c:/')
 print(a)
+b = os.listdir()
+print(b)
+
+import requests
+
+r = requests.get(url, headers=dict)
