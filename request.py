@@ -4,7 +4,7 @@ import re
 import json
 import os
 
-bv = 'BV1m54y1b72h'
+bv = 'BV1yZ4y1c7fL'
 url = 'https://www.bilibili.com/video/' + bv
 headers = {
     "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 "
@@ -27,7 +27,10 @@ def video_add_mp3(video_path, audio_path):
     :param audio_path: 传入音频文件的路径
     :return:
     """
-    outfile_name = video_path.split('.')[0] + '.mp4'
+    if not os.path.exists('./video'):
+        os.mkdir('./video')
+
+    outfile_name = './video/' + video_path.split('.')[0] + '.mp4'
     path = 'ffmpeg.exe' + ' -i ' + '\"' + video_path + '\"' + ' -i ' + '\"' + audio_path + '\"' + ' -codec copy ' + '\"' + outfile_name + '\"'
     os.system(path)
     if os.path.exists(outfile_name):
